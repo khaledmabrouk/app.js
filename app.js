@@ -1,5 +1,15 @@
 const express = require('express')
 const app = express()
+mongoose.connect('mongodb+srv://user:user@cluster0.pwwbe.mongodb.net/e-commerce?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex : true
+  });
+  mongoose.Promise = global.Promise;
+  mongoose.connection.on("error", error => {
+    
+      console.log('Problem connection to the database'+error);
+  });
 const mongoClient = require('mongodb').MongoClient
 
 const url = "mongodb://localhost:27017"
