@@ -1,30 +1,3 @@
-const express = require('express')
-const app = express()
-mongoose.connect('mongodb+srv://user:user@cluster0.pwwbe.mongodb.net/e-commerce?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex : true
-  });
-  mongoose.Promise = global.Promise;
-  mongoose.connection.on("error", error => {
-    
-      console.log('Problem connection to the database'+error);
-  });
-const mongoClient = require('mongodb').MongoClient
-
-const url = "mongodb://localhost:27017"
-
-app.use(express.json())
-
-mongoClient.connect(url, (err, db) => {
-
-    if (err) {
-        console.log("Error while connecting mongo client")
-    } else {
-
-        const myDb = db.db('myDb')
-        const collection = myDb.collection('myTable')
-
         app.post('/signup', (req, res) => {
 
             const newUser = {
@@ -77,8 +50,4 @@ mongoClient.connect(url, (err, db) => {
 
     }
 
-})
-
-app.listen(3000, () => {
-    console.log("Listening on port 3000...")
 })
